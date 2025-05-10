@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'DEPLOY_ENV', choices: ['staging', 'production'], description: 'Select the deployment environment')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // Add your build steps here
+            }
+        }
+
+        stage('Deploy to Staging') {
+            when {
+                expression {
+                    return params.DEPLOY_ENV == 'staging'
+                }
+            }
+            steps {
+                echo 'Deploying to Staging...'
+                // Add staging deployment steps here
+            }
+        }
+
+        stage('Approval Required') {
+            steps {
+                script {
+                    // This input step pauses the pipeline and waits for manual approval   showing tow option deploy or abort 
+                    input message: 'Approve Deployment to Production?', ok: 'Deploy'
+                }
+            }
+        }
+
+        stage('Deploy to Production') {
+            when {
+                expression {
+                    return params.DEPLOY_ENV == 'production'
+                }
+            }
+            steps {
+                echo 'Deploying to Production...'
+                // Add production deployment steps here
+            }
+        }
+
+        stage('Post-Deployment') {
+            steps {
+                echo 'Performing post-deployment tasks...'
+                // Add post-deployment tasks here
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'This will always run, whether the pipeline succeeds or fails.'
+        }
+        success {
+            echo 'The pipeline completed successfully!'
+        }
+        failure {
+            echo 'The pipeline failed.'
+        }
+    }
+}

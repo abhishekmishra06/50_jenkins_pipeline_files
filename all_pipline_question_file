@@ -1,0 +1,111 @@
+Beginner Level (1–15): Getting Started
+Hello World Pipeline: Create a simple pipeline that prints "Hello, Jenkins!" to the console.
+
+Basic Build Stage: Add a Build stage that echoes "Building the project...".
+
+Multiple Stages: Introduce Test and Deploy stages with corresponding echo statements.
+
+Environment Variables: Define and use an environment variable within your pipeline.
+
+Using the agent Directive: Specify an agent for your pipeline execution.
+
+Simple Shell Command: Execute a basic shell command like ls or pwd.
+
+Parameterize Build: Add a string parameter to your pipeline and print its value.
+
+Conditional Execution: Use the when directive to conditionally run a stage based on a parameter.
+
+Post Actions: Implement post actions to handle success and failure scenarios.
+
+Pipeline Input: Add an input step to pause the pipeline for manual approval.
+
+Timeouts: Set a timeout for a stage to prevent it from running indefinitely.
+
+Retry Mechanism: Use the retry block to retry a failed step a specified number of times.
+
+Parallel Stages: Execute two stages in parallel to speed up the pipeline.
+
+Workspace Cleanup: Clean the workspace before or after the pipeline execution.
+
+Build Number: Access and print the current build number using env.BUILD_NUMBER.
+
+
+
+
+
+
+
+Intermediate Level (16–35): Expanding Skills
+Checkout SCM: Use the checkout scm step to pull code from your repository.
+
+Archiving Artifacts: Archive build artifacts for later use.
+
+Email Notifications: Send an email notification upon build completion.
+
+Slack Integration: Integrate Slack to send build notifications.
+
+Tool Installation: Use the tools directive to install and use Maven or JDK.
+
+Parameterized Builds: Trigger a downstream job with parameters.
+
+Shared Libraries: Create and use a shared library in your pipeline.
+
+Credentials Management: Access stored credentials securely within the pipeline.
+
+Docker Integration: Build and run a Docker container as part of the pipeline.
+
+Matrix Builds: Set up a matrix build to test across multiple environments.
+
+Multibranch Pipeline: Configure a multibranch pipeline to handle multiple branches.
+
+Git Tagging: Tag the repository upon successful build completion.
+
+Stashing Files: Use stash and unstash to pass files between stages.
+
+Artifact Fingerprinting: Enable fingerprinting to track artifacts across builds.
+
+Pipeline Parameters: Use different types of parameters like boolean, choice, etc.
+
+Build Triggers: Set up triggers to start the pipeline on code changes.
+
+Pipeline as Code: Store your pipeline script in the repository as a Jenkinsfile.
+
+Blue Ocean Visualization: Use Blue Ocean to visualize and manage pipelines.
+
+Pipeline Libraries: Organize reusable code in pipeline libraries.
+
+Custom Workspace: Define and use a custom workspace for your pipeline.
+
+
+
+
+Advanced Level (36–50): Mastery and Optimization
+Dynamic Agent Allocation: Dynamically allocate agents based on build requirements.
+
+Parallel Test Execution: Run tests in parallel to reduce execution time.
+
+Quality Gates: Integrate tools like SonarQube to enforce code quality gates.
+
+Infrastructure as Code: Use tools like Terraform within your pipeline.
+
+Security Scanning: Integrate security scanning tools like OWASP ZAP.
+
+Performance Testing: Run performance tests using tools like JMeter.
+
+Canary Deployments: Implement canary deployment strategies.
+
+Blue-Green Deployments: Set up blue-green deployment workflows.
+
+Rollback Mechanism: Implement a rollback mechanism in case of deployment failure.
+
+Custom Plugins: Develop and use custom Jenkins plugins.
+
+API Integration: Interact with external APIs during the pipeline execution.
+
+Pipeline Metrics: Collect and analyze pipeline execution metrics.
+
+Resource Locking: Use the lock step to prevent concurrent access to resources.
+
+Nested Pipelines: Call and manage nested pipelines for complex workflows.
+
+Disaster Recovery: Set up backup and restore strategies for Jenkins configurations.

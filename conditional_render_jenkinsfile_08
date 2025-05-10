@@ -1,0 +1,92 @@
+
+
+// Steps to Create a Parameterized Jenkins Job with a Select (Choice) Parameter
+// Go to Your Jenkins Job:
+
+// Open Jenkins and navigate to the job you want to parameterize, or create a new job.
+
+// If you're creating a new job, select "New Item", choose Freestyle Project (or Pipeline if you’re using pipeline jobs), and then click OK.
+
+// Enable Parameters:
+
+// In the job configuration page, scroll down to the "This project is parameterized" checkbox.
+
+// Check the "This project is parameterized" box. This will enable you to define parameters for the job.
+
+// Add a Choice Parameter:
+
+// After checking the box, click on the Add Parameter button, and select Choice Parameter.
+
+// A new section will appear where you can configure your Choice Parameter.
+
+// Set the Name (e.g., DEPLOY_ENV) and add the Choices you want to appear in the dropdown (e.g., staging, production).
+
+// You can also add a Description (optional) to explain the parameter's purpose.
+
+// Save the Job Configuration:
+
+// After configuring the parameter, click Save to save your changes.
+
+
+
+
+pipeline {
+    agent any
+    
+    parameters {
+        // Define a choice parameter for selecting environment
+        choice(name: 'DEPLOY_ENV', choices: ['production', 'staging'], description: 'Select the deployment environment')
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // Add your build steps here
+            }
+        }
+
+        stage('Deploy to Staging') {
+            when {
+                expression {
+                    return params.DEPLOY_ENV == 'staging'
+                }
+            }
+            steps {
+                echo 'Deploying to Staging...'
+                // Add your staging deployment steps here
+            }
+        }
+
+        stage('Deploy to Production') {
+            when {
+                expression {
+                    return params.DEPLOY_ENV == 'production'
+                }
+            }
+            steps {
+                echo 'Deploying to Production...'
+                // Add your production deployment steps here
+            }
+        }
+
+        stage('Post-Deployment') {
+            steps {
+                echo 'Cleaning up or performing post-deployment tasks...'
+                // Add any post-deployment tasks here
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'This will always run, whether the pipeline succeeds or fails.'
+        }
+        success {
+            echo 'The pipeline completed successfully!'
+        }
+        failure {
+            echo 'The pipeline failed.'
+        }
+    }
+}

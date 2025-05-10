@@ -1,0 +1,23 @@
+// select project as  This project is parameterized
+?
+
+pipeline{
+    agent any
+
+    stages{
+        stage('print parameter'){
+            steps{
+                
+                echo "${name}"
+            }
+        }
+        stage('success'){
+            steps{
+                
+                echo "script run successfull"
+            }
+        }
+    }
+
+
+}
