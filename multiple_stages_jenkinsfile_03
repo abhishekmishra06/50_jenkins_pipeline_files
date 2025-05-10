@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('Install Dependencies'){
+            steps{
+                echo "Install Dependencies"
+            <!-- this is shell command install dependenci for node js project  -->
+            sh 'npm install'
+            }
+        }
+        stage('build'){
+            steps{
+                echo "make build"
+                sh "npm build"
+
+            }
+        }
+        stage('test'){
+            steps{
+                echo "running test"
+                sh "npm test"
+            }
+        }
+
+        stage('start'){
+            steps{
+                echo 'run project'
+                sh "npm start"
+            }
+        }
+
+    }
+}

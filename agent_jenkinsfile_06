@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'linux' } // Run this pipeline on a node with the label 'linux'
+
+    stages {
+        stage('Show Node Info') {
+            steps {
+                echo "Running on node: ${env.NODE_NAME}"
+                sh 'uname -a' // Display system info
+            }
+        }
+    }
+}

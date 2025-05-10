@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+
+    stages{
+        stage("rnu ls"){
+           steps{
+             echo 'running shell ls command'
+            sh 'ls'
+           }
+           
+        }
+        stage{
+            steps{
+                echo 'running shell command pwd'
+                sh 'pwd'
+            }
+        }
+    }
+    
+}

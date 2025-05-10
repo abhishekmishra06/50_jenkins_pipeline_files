@@ -1,0 +1,33 @@
+// -----------------------------
+// Jenkins Declarative Pipeline
+// -----------------------------
+// This pipeline is configured to:
+// 1. Select an available Jenkins agent (node) labeled 'linux'
+// 2. Run a stage to display basic node/system information
+// 3. Use 'sh' shell command to show system details using 'uname -a'
+// This is useful to verify which node is running the job and what its system specs are.
+
+
+pipeline {
+    agent any
+
+    environment{
+        MY_ENV_VAR = "abhishek"
+    }
+
+    stages{
+        stage('Print Local Variable'){
+            steps{
+                echo "print Local Enviroment Variable value ${env.MY_ENV_VAR}"
+                echo $NAME
+            }
+        } 
+
+         stage('Print Global Variable') {
+            steps {
+                echo "Global Variable: ${env.OWNERNAME}"
+                sh 'echo "Shell sees: $OWNERNAME"'
+            }
+        }
+    }
+}

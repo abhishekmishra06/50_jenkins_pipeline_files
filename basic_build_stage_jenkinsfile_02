@@ -1,0 +1,13 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('build'){
+            steps{
+                echo "Building the project..."
+            <!-- run any shell command for make build  -->
+            <!-- sh 'npm build'  -->  
+            }
+        }
+    }
+}
